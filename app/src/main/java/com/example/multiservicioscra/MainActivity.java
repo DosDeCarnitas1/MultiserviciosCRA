@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                     else{
                                         Toast.makeText(getApplicationContext(),jsonObject.getString("nombre")+" "+jsonObject.getString("apellido"),Toast.LENGTH_LONG).show();
-                                        ventana = new Intent(MainActivity.this, MenuCliente.class);
+                                        ventana = new Intent(MainActivity.this, MenuMaster.class);
                                     }
                                     startActivity(ventana);
                                 }
