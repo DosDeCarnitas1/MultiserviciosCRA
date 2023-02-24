@@ -22,11 +22,11 @@
         app:layout_constraintVertical_bias="0.039" />
 
     <Button
-        android:id="@+id/btnadminServicios"
+        android:id="@+id/btntickets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_blue_dark"
-        android:text="Administrar servicios"
+        android:text="Tickets"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,11 +36,11 @@
         app:layout_constraintVertical_bias="0.316" />
 
     <Button
-        android:id="@+id/btnadminEmp"
+        android:id="@+id/btntecnicos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_blue_dark"
-        android:text="Administrar empleados"
+        android:text="Tecnicos"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,11 +50,11 @@
         app:layout_constraintVertical_bias="0.499" />
 
     <Button
-        android:id="@+id/btnadminRefac"
+        android:id="@+id/btnrefacciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_blue_dark"
-        android:text="Administrar refacciones"
+        android:text="Refacciones"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
