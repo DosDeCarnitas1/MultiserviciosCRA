@@ -4,19 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/xd"
+    android:background="@drawable/master"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autoSizeTextType="none"
         android:text="Inicio de sesión"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintVertical_bias="0.022" />
 
     <EditText
         android:id="@+id/etusuario"
@@ -26,15 +29,18 @@
         android:layout_marginTop="89dp"
         android:layout_marginEnd="65dp"
         android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/black"
         android:ems="10"
         android:hint="Usuario:"
         android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.573" />
 
     <EditText
         android:id="@+id/etcontraseña"
@@ -44,15 +50,18 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="65dp"
         android:layout_marginBottom="48dp"
+        android:backgroundTint="@color/black"
         android:ems="10"
         android:hint="Contraseña:"
         android:inputType="textPassword"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.724" />
+        app:layout_constraintVertical_bias="0.779" />
 
     <Button
         android:id="@+id/btningresar"
@@ -67,7 +76,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.821" />
+        app:layout_constraintVertical_bias="0.841" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -79,7 +88,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163"/>
+        app:layout_constraintVertical_bias="0.163" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
