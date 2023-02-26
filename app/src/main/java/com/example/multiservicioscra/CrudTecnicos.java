@@ -52,7 +52,7 @@ public class CrudTecnicos extends AppCompatActivity {
         btnconsultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                consulta("http://" + ip + "/ejemplomovil/consultaEmp.php?codigo=" + etusuarioEmp.getText());
+                consulta("http://" + ip + "/MCRAAndroidphps/consultaUsuario.php?codigo=" + etusuarioEmp.getText());
             }
         });//cierre del onclick consulta
 

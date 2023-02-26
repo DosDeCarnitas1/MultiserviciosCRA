@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     EditText etusuario,etcontraseña;
     Button btningresar;
     RequestQueue requestQueue;
+
+    //String ip = "192.168.100.76";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +36,14 @@ public class MainActivity extends AppCompatActivity {
         btningresar = findViewById(R.id.btningresar);
         requestQueue = Volley.newRequestQueue(this);
 
+
         btningresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //la ip 10.0.2.2 android la reconoce como localhost
                 //inicioSesion("http://10.0.2.2:8080/ejemplomovil/validaentradaMovil.php?usuario="+ etusuario.getText().toString());
                 //utilizando la ip de la laptop o computadora.
-                inicioSesion("http://192.168.100.76/ejemplomovil/validaentradaMovil.php?usuario="+ etusuario.getText().toString());
+                inicioSesion("http://192.168.100.76/MCRAAndroidphps/consultaUsuario.php?usuario="+ etusuario.getText().toString());
                 //conexion desde el dispositivo movil deben usar un hosting (conexion segura https) o tener un certificado digital (SSL)
                 //inicioSesion("https://ip o nombre_domino del hosting/ejemplomovil/validaentradaMovil.php?usuario="+ etusuario.getText().toString());
             }
@@ -103,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
        // android:layout_height="match_parent"
       //  android:orientation="vertica"
 
-      //  android:background="@drawable/Fondo"
+      //  android:x="@drawable/Fondo"
 
       //  android:padding="10dp">
 
