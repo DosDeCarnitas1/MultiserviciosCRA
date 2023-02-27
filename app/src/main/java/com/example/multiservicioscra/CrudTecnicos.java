@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,7 +32,7 @@ public class CrudTecnicos extends AppCompatActivity {
 
     RequestQueue requestQueue;
 
-    String ip = "192.168.100.76";
+    String ip = "192.168.100.9";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,9 @@ public class CrudTecnicos extends AppCompatActivity {
         btnmodificar = findViewById(R.id.btnmodificar);
         btneliminar = findViewById(R.id.btneliminar);
 
+        requestQueue = Volley.newRequestQueue(this);
+
+
         btnconsultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +63,7 @@ public class CrudTecnicos extends AppCompatActivity {
         btnregistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                operaciones("http://" + ip + "/ejemplomovil/insertarEmp.php");
+                operaciones("http://" + ip + "/MCRAAndroidphps/registroTecnico.php");
             }
         });//cierre del onclick registrar
 
