@@ -56,7 +56,7 @@ public class CrudTecnicos extends AppCompatActivity {
         btnconsultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                consulta("http://" + ip + "/MCRAAndroidphps/consultaUsuario.php?codigo=" + etusuarioEmp.getText());
+                consulta("http://" + ip + "/MCRAAndroidphps/consultaUsuario.php?usuario=" + etusuarioEmp.getText());
             }
         });//cierre del onclick consulta
 
@@ -70,7 +70,7 @@ public class CrudTecnicos extends AppCompatActivity {
         btnmodificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                operaciones("http://" + ip + "/ejemplomovil/modificaEmp.php");
+                operaciones("http://" + ip + "/MCRAAndroidphps/actualizarTecnico.php");
             }
         });//cierre del onclick modificar
 
@@ -94,6 +94,8 @@ public class CrudTecnicos extends AppCompatActivity {
                     etpuesto.setText("");
                     etusuarioEmp.setText("");
                     etcontraseñaEmp.setText("");
+
+                    idEmpleado = 0;
                 } else {
                     Toast.makeText(getApplicationContext(), "Operación no exitosa", Toast.LENGTH_LONG).show();
                 }
@@ -114,6 +116,12 @@ public class CrudTecnicos extends AppCompatActivity {
                 parametros.put("usuario", etusuarioEmp.getText().toString());
                 parametros.put("password", etcontraseñaEmp.getText().toString());
                 parametros.put("tipo", "Empleado");
+
+                if(idEmpleado != 0){
+                    parametros.put("id", Integer.toString(idEmpleado));
+                    System.out.println("Veamos si id: "+parametros.get("id"));
+                }
+
                 return parametros;
             }
         };
@@ -125,6 +133,8 @@ public class CrudTecnicos extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }//cierre del método operaciones
 
+    int idEmpleado = 0;
+
     private void consulta(String url){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (url, new Response.Listener<JSONArray>() {
@@ -135,12 +145,12 @@ public class CrudTecnicos extends AppCompatActivity {
                         for (int i = 0; i < response.length(); i++) {
                             try {//extrayendo el objecto json de cada una de las posiciones del arreglo
                                 jsonObject = response.getJSONObject(i);
-
                                 etnombreEmp.setText(jsonObject.getString("nombre"));
                                 etapellidoEmp.setText(jsonObject.getString("apellido"));
                                 etpuesto.setText(jsonObject.getString("puesto"));
-                                etusuarioEmp.setText(jsonObject.getString("usuario"));
-                                etcontraseñaEmp.setText(jsonObject.getString("contraseña"));
+                                //etusuarioEmp.setText(jsonObject.getString("name"));
+                                etcontraseñaEmp.setText(jsonObject.getString("password"));
+                                idEmpleado = Integer.parseInt(jsonObject.getString("id"));
 
                             }//cierre del try
                             catch (JSONException e) {
@@ -154,7 +164,7 @@ public class CrudTecnicos extends AppCompatActivity {
                         // TODO: Handle error
                         System.out.println(error);
                         Toast.makeText(getApplicationContext(),"Empleado no encontrado",Toast.LENGTH_LONG).show();
-
+                        idEmpleado =0;
                         etnombreEmp.setText("");
                         etapellidoEmp.setText("");
                         etpuesto.setText("");
