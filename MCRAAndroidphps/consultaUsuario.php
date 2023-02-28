@@ -21,7 +21,7 @@ $resultado = $stmt->get_result();
      $row = $resultado->fetch_assoc();
 
      if($row['tipo']=="Empleado"){
-        $query="select id, nombre, apellido, puesto, id_usuario from tecnicos where id_usuario = ?";
+        $query="select nombre, apellido, puesto, id_usuario from tecnicos where id_usuario = ?";
 
        $stmt = $mysqli->prepare($query);
        $stmt->bind_param('i',$row['id']);
