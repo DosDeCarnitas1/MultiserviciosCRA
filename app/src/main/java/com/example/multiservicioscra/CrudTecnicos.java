@@ -98,6 +98,9 @@ public class CrudTecnicos extends AppCompatActivity {
                     idEmpleado = 0;
                 } else {
                     Toast.makeText(getApplicationContext(), "Operación no exitosa", Toast.LENGTH_LONG).show();
+                    System.out.println(idEmpleado);
+                    System.out.println(response);
+
                 }
             }
         }, new Response.ErrorListener() {
@@ -148,7 +151,7 @@ public class CrudTecnicos extends AppCompatActivity {
                                 etnombreEmp.setText(jsonObject.getString("nombre"));
                                 etapellidoEmp.setText(jsonObject.getString("apellido"));
                                 etpuesto.setText(jsonObject.getString("puesto"));
-                                //etusuarioEmp.setText(jsonObject.getString("name"));
+                                etusuarioEmp.setText(jsonObject.getString("name"));
                                 etcontraseñaEmp.setText(jsonObject.getString("password"));
                                 idEmpleado = Integer.parseInt(jsonObject.getString("id"));
 
