@@ -5,22 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MenuMaster extends AppCompatActivity {
 
-    Button btntickets, btntecnicos, btnrefacciones;
+    ImageButton ibtntickets, ibtntecnicos, ibtnrefacciones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_master);
 
-        btntickets = findViewById(R.id.btntickets);
-        btntecnicos = findViewById(R.id.btntecnicos);
-        btnrefacciones = findViewById(R.id.btnrefacciones);
+        ibtntickets = findViewById(R.id.ibtntickets);
+        ibtntecnicos = findViewById(R.id.ibtntecnicos);
+        ibtnrefacciones = findViewById(R.id.ibtnrefacciones);
 
-        btntecnicos.setOnClickListener(new View.OnClickListener() {
+        ibtntecnicos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent v = new Intent(getApplicationContext(), CrudTecnicos.class);
@@ -28,20 +28,20 @@ public class MenuMaster extends AppCompatActivity {
             }
         });
 
-        //btntickets.setOnClickListener(new View.OnClickListener() {
-          //  @Override
-           // public void onClick(View view) {
-              //  Intent v = new Intent(getApplicationContext(), CrudTickets.class);
-              //  startActivity(v);
-          //  }
-       // });
+       /* ibtntickets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent v = new Intent(getApplicationContext(), CrudTickets.class);
+                startActivity(v);
+            }
+        });*/
 
-       // btnrefacciones.setOnClickListener(new View.OnClickListener() {
-         //   @Override
-         //   public void onClick(View view) {
-         //       Intent v = new Intent(getApplicationContext(), CrudRefacciones.class);
-         //       startActivity(v);
-          //  }
-       // });
+        /*ibtnrefacciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent v = new Intent(getApplicationContext(), CrudRefacciones.class);
+                startActivity(v);
+            }
+        });*/
     }
 }
