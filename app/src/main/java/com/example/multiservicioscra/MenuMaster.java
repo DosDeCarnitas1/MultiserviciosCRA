@@ -28,20 +28,20 @@ public class MenuMaster extends AppCompatActivity {
             }
         });
 
-       /* ibtntickets.setOnClickListener(new View.OnClickListener() {
+        ibtntickets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent v = new Intent(getApplicationContext(), CrudTickets.class);
                 startActivity(v);
             }
-        });*/
+        });
 
-        /*ibtnrefacciones.setOnClickListener(new View.OnClickListener() {
+        ibtnrefacciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent v = new Intent(getApplicationContext(), CrudRefacciones.class);
                 startActivity(v);
             }
-        });*/
+        });
     }
 }

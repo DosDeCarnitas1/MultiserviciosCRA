@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,7 +29,8 @@ import java.util.Map;
 public class CrudTecnicos extends AppCompatActivity {
 
     EditText etnombreEmp, etapellidoEmp, etpuesto, etusuarioEmp, etcontraseñaEmp;
-    Button btnregistrar, btnconsultar, btnmodificar, btneliminar;
+
+    ImageButton ibtnregistrar, ibtnconsultar, ibtnmodificar, ibtneliminar;
 
     RequestQueue requestQueue;
 
@@ -45,36 +47,36 @@ public class CrudTecnicos extends AppCompatActivity {
         etusuarioEmp = findViewById(R.id.etusuarioEmp);
         etcontraseñaEmp = findViewById(R.id.etcontraseñaEmp);
 
-        btnregistrar = findViewById(R.id.btnregistrar);
-        btnconsultar = findViewById(R.id.btnconsultar);
-        btnmodificar = findViewById(R.id.btnmodificar);
-        btneliminar = findViewById(R.id.btneliminar);
+        ibtnregistrar = findViewById(R.id.ibtnregistrar);
+        ibtnconsultar = findViewById(R.id.ibtnconsultar);
+        ibtnmodificar = findViewById(R.id.ibtnmodificar);
+        ibtneliminar = findViewById(R.id.ibtneliminar);
 
         requestQueue = Volley.newRequestQueue(this);
 
 
-        btnconsultar.setOnClickListener(new View.OnClickListener() {
+        ibtnconsultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 consulta("http://" + ip + "/MCRAAndroidphps/consultaUsuario.php?codigo=" + etusuarioEmp.getText());
             }
         });//cierre del onclick consulta
 
-        btnregistrar.setOnClickListener(new View.OnClickListener() {
+        ibtnregistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 operaciones("http://" + ip + "/MCRAAndroidphps/registroTecnico.php");
             }
         });//cierre del onclick registrar
 
-        btnmodificar.setOnClickListener(new View.OnClickListener() {
+        ibtnmodificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 operaciones("http://" + ip + "/ejemplomovil/modificaEmp.php");
             }
         });//cierre del onclick modificar
 
-        btneliminar.setOnClickListener(new View.OnClickListener() {
+        ibtneliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 operaciones("http://" + ip + "/ejemplomovil/eliminaEmp.php");

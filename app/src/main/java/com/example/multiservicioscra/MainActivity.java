@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                                     Intent ventana=null;
                                     if(jsonObject.getString("tipo").equals("Empleado")) {
                                         Toast.makeText(getApplicationContext(),jsonObject.getString("puesto")+ " "+jsonObject.getString("nombre")+" "+jsonObject.getString("apellido"),Toast.LENGTH_LONG).show();
-                                        ventana = new Intent(MainActivity.this, MenuEmpleado.class);
+                                        ventana = new Intent(MainActivity.this, MenuTecnico.class);
                                     }
                                     else{
                                         Toast.makeText(getApplicationContext(),jsonObject.getString("nombre")+" "+jsonObject.getString("apellido"),Toast.LENGTH_LONG).show();
