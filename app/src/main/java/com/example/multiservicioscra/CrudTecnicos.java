@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class CrudTecnicos extends AppCompatActivity {
 
-    EditText etnombreEmp, etapellidoEmp, etpuesto, etusuarioEmp, etcontraseñaEmp;
+    EditText etnombreEmp, etapellidoEmp, etpuesto, etusuarioEmp, etcontraseñaEmp, etdomicilioEmp, etzonaEmp;
     Button btnregistrar, btnconsultar, btnmodificar, btneliminar;
 
     RequestQueue requestQueue;
@@ -44,6 +44,8 @@ public class CrudTecnicos extends AppCompatActivity {
         etpuesto = findViewById(R.id.etpuesto);
         etusuarioEmp = findViewById(R.id.etusuarioEmp);
         etcontraseñaEmp = findViewById(R.id.etcontraseñaEmp);
+        etdomicilioEmp = findViewById(R.id.etusuarioDirEmp);
+        etzonaEmp = findViewById(R.id.etusuarioZonaEmp);
 
         btnregistrar = findViewById(R.id.btnregistrar);
         btnconsultar = findViewById(R.id.btnconsultar);
@@ -94,6 +96,8 @@ public class CrudTecnicos extends AppCompatActivity {
                     etpuesto.setText("");
                     etusuarioEmp.setText("");
                     etcontraseñaEmp.setText("");
+                    etdomicilioEmp.setText("");
+                    etzonaEmp.setText("");
 
                     idEmpleado = 0;
                 } else {
@@ -118,6 +122,8 @@ public class CrudTecnicos extends AppCompatActivity {
                 parametros.put("puesto", etpuesto.getText().toString());
                 parametros.put("usuario", etusuarioEmp.getText().toString());
                 parametros.put("password", etcontraseñaEmp.getText().toString());
+                parametros.put("domicilio", etdomicilioEmp.getText().toString());
+                parametros.put("zona", etzonaEmp.getText().toString());
                 parametros.put("tipo", "Empleado");
 
                 if(idEmpleado != 0){
@@ -153,6 +159,8 @@ public class CrudTecnicos extends AppCompatActivity {
                                 etpuesto.setText(jsonObject.getString("puesto"));
                                 etusuarioEmp.setText(jsonObject.getString("name"));
                                 etcontraseñaEmp.setText(jsonObject.getString("password"));
+                                etdomicilioEmp.setText(jsonObject.getString("domicilio"));
+                                etzonaEmp.setText(jsonObject.getString("zona"));
                                 idEmpleado = Integer.parseInt(jsonObject.getString("id"));
 
                             }//cierre del try
@@ -173,6 +181,8 @@ public class CrudTecnicos extends AppCompatActivity {
                         etpuesto.setText("");
                         etusuarioEmp.setText("");
                         etcontraseñaEmp.setText("");
+                        etdomicilioEmp.setText("");
+                        etzonaEmp.setText("");
                     }
 
                 });

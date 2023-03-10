@@ -3,7 +3,7 @@
 include 'conexion.php';
 
 //2.- Prepara la instrucción (query) para la base datos.
-$query ="select id, name, tipo, password from users where name = ?";
+$query ="select id, name, tipo, password from users where name = ? and estado = 'Activo'";
 //stmt se le conoce como statement
 $stmt = $mysqli->prepare($query);
 //sustituir comodines por valores reales
@@ -21,7 +21,7 @@ $resultado = $stmt->get_result();
      $row = $resultado->fetch_assoc();
 
      if($row['tipo']=="Empleado"){
-        $query="select nombre, apellido, puesto, id_usuario from tecnicos where id_usuario = ?";
+        $query="select nombre, apellido, puesto,domicilio,zona, id_usuario from tecnicos where id_usuario = ? and estado = 'Activo'";
 
        $stmt = $mysqli->prepare($query);
        $stmt->bind_param('i',$row['id']);
@@ -38,7 +38,7 @@ $resultado = $stmt->get_result();
         }
      }
      else if($row['tipo']=="Master"){
-        $query="select id, nombre, apellido, puesto, id_usuario from tecnicos where id_usuario = ?";
+        $query="select id, nombre, apellido, puesto, id_usuario from tecnicos where id_usuario = ? and estado = 'Activo'";
 
        $stmt = $mysqli->prepare($query);
        $stmt->bind_param('i',$row['id']);
@@ -55,22 +55,23 @@ $resultado = $stmt->get_result();
         }
 
      }
-     else//en este codigo es si eres cliente
-     {
-        $query="select nombre,apellido from clientes where idclientes=?";
+    //  else//en este codigo es si eres cliente
+    //  {
+    //     $query="select nombre,apellido from clientes where idclientes=?";
 
-        $stmt= $mysqli->prepare($query);
-        $stmt->bind_param('i',$row['codigoref']);
+    //     $stmt= $mysqli->prepare($query);
+    //     $stmt->bind_param('i',$row['codigoref']);
 
-        $stmt->execute();
+    //     $stmt->execute();
 
-        $resultado2= $stmt->get_result();
-        if($resultado2->num_rows>0){
-            $row2= $resultado2->fetch_array();
-            $respuesta[]= array_merge(array_map('utf8_encode',$row),array_map('utf8_encode',$row2));
-            echo json_encode($respuesta);
-        }
-     } 
+    //     $resultado2= $stmt->get_result();
+    //     if($resultado2->num_rows>0){
+    //         $row2= $resultado2->fetch_array();
+    //         $respuesta[]= array_merge(array_map('utf8_encode',$row),array_map('utf8_encode',$row2));
+    //         echo json_encode($respuesta);
+    //     }
+    //  } 
+ }else{
  }
  //5.- Cerrar la conexión de la base de datos.
  $mysqli->close();
