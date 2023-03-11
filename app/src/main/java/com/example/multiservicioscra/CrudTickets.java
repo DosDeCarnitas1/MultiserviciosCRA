@@ -4,12 +4,15 @@ import static com.example.multiservicioscra.MainActivity.usuarioIdParaConsultas;
 import static com.example.multiservicioscra.MainActivity.usuarioTipoParaConsultas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -55,11 +58,34 @@ public class CrudTickets extends AppCompatActivity {
                     try {
                         //se le resta uno a la longitud del json porque el primer campo son los "estados" los cuales no son tickets
                         //cosa que se presenta cuando se hace un cambio en el spiner, o mas bien se filtra
+                        ArrayList<String> tickets = new ArrayList<String>();
                         for (int i = 0; i < jsonObject.length()-1; i++) {
+                            //bro estos de aqui son para que tu verifiques por la consola si si sale lo esperado
                             System.out.println(i);
                             String index = Integer.toString(i);
                             System.out.println(jsonObject.getJSONObject(index));
+
+                            //meto todos las concidencias en la lista
+                            if(jsonObject.getJSONObject(index).getString("Estado").equals(filtro)){
+                                //esta parte creo que va a ser la mas dificil de hacer, tenemos que ver cuales
+                                //fueron los campos que definiste, porque yo te devuelvo todas las columnas por cada registro
+                                //tendriamos que elejir que columnas se pasan, para que cuando lo metamos a el listadapter, los
+                                //datos que devuelve el php coincidan con los campos que tu definiste
+
+                                tickets.add(jsonObject.getJSONObject(index).toString());
+                            }
                         }
+                        //EN ESTA parte intente meter lo que el chavo mete en el minuto 27:39.
+                        //Puede estar mal, pero mas o menos espero que sirva como guia para ver si jala xd
+                        //van a aparecer muchos errores si no me equivoco, es por que las clases son las que
+                        //definio el chavo
+                        if(!tickets.isEmpty()){
+                            ListAdapter listAdapter = new ListAdapter(tickets, this);
+                            RecyclerView recyclerView = findViewById(R.id.listRecyclerView);
+                            recyclerView.setHasFixedSize(true);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                        }
+
 
                     }catch (Exception e){
                         System.out.println(e);

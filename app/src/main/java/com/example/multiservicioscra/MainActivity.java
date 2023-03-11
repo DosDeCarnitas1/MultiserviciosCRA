@@ -20,7 +20,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static int usuarioIdParaConsultas = 0;
+    public static String usuarioTipoParaConsultas = "";
     EditText etusuario,etcontraseña;
     Button btningresar;
     RequestQueue requestQueue;
@@ -69,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                                 if(jsonObject.getString("password").equals(etcontraseña.getText().toString())){
                                     Toast.makeText(getApplicationContext(),"Bienvenido",Toast.LENGTH_LONG).show();
                                     Intent ventana=null;
+                                    usuarioIdParaConsultas = Integer.parseInt(jsonObject.getString("id"));
+                                    usuarioTipoParaConsultas = jsonObject.getString("tipo");
                                     if(jsonObject.getString("tipo").equals("Empleado")) {
                                         Toast.makeText(getApplicationContext(),jsonObject.getString("puesto")+ " "+jsonObject.getString("nombre")+" "+jsonObject.getString("apellido"),Toast.LENGTH_LONG).show();
                                         ventana = new Intent(MainActivity.this, MenuTecnico.class);
