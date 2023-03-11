@@ -5,16 +5,22 @@ include "conexion.php";
 
 if($_GET['tipoUsuario'] == "Master"){
     //acesa a todos los estados: activo, inactivo y en progreso, y asignados a el
-    // $estados = array("Estados"=>["Activo", "Pendiente","Inactivo", "Asignados"]);
+    $estados = array("Estados"=>["Activo", "Pendiente","Inactivo", "Asignados"]);
     $query = "SELECT * FROM tickets";
     $stmt = $mysqli->prepare($query);
     // $stmt->bind_param('s', $_GET['id_usuario']);
     $stmt->execute();
 
     $reurn = $stmt->get_result();
-    var_dump($reurn);
-    $consulta = $reurn->fetch_assoc();
-    $respuesta[] = array_merge(/*$estados,*/ array_map('utf8_decode',$consulta));
+    // var_dump($reurn);
+    $arrResultados = array();
+    while($row = $reurn->fetch_assoc()){
+        $arrResultados[] = $row;
+    }
+    // print_r($arrResultados);
+    $consulta = $arrResultados;
+    // var_dump($arrResultados);
+    $respuesta[] = array_merge($estados, $consulta);
     
     echo json_encode($respuesta);
 }else{
@@ -26,8 +32,15 @@ if($_GET['tipoUsuario'] == "Master"){
     $stmt->execute();
 
     $reurn = $stmt->get_result();
-    $consulta = $reurn->fetch_assoc();
-    $respuesta[] = array_merge($estados, array_map('utf8_decode',$consulta));
+    // var_dump($reurn);
+    $arrResultados = array();
+    while($row = $reurn->fetch_assoc()){
+        $arrResultados[] = $row;
+    }
+    // print_r($arrResultados);
+    $consulta = $arrResultados;
+    // var_dump($arrResultados);
+    $respuesta[] = array_merge($estados, $consulta);
     
     echo json_encode($respuesta);
     
