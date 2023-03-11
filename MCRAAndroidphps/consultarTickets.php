@@ -24,7 +24,7 @@ if($_GET['tipoUsuario'] == "Master"){
     
     echo json_encode($respuesta);
 }else{
-    //este es un array que yo creo es para filtrar en el spinner
+    //este es un array que yo cree es para filtrar en el spinner
     $estados = array("Estados"=>["Activo", "Pendiente","Inactivo"]);
     $query = "SELECT * FROM tickets where tecnicoAsignado = ?";
     $stmt = $mysqli->prepare($query);

@@ -7,12 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -27,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CrudTickets extends AppCompatActivity {
 
@@ -35,13 +34,15 @@ public class CrudTickets extends AppCompatActivity {
     String ip = "192.168.100.9";
     RequestQueue requestQueue;
     ArrayAdapter arrayAdapter;
+
+    List<ListElement> tickets;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crud_tickets);
 
         requestQueue = Volley.newRequestQueue(this);
-        spEstado = findViewById(R.id.spestado);
+        spEstado = findViewById(R.id.spEstado);
 
         System.out.println("Este es el id del usuario: "+usuarioIdParaConsultas);
         System.out.println("Este es el tipo del usuario: "+usuarioTipoParaConsultas);
@@ -58,7 +59,7 @@ public class CrudTickets extends AppCompatActivity {
                     try {
                         //se le resta uno a la longitud del json porque el primer campo son los "estados" los cuales no son tickets
                         //cosa que se presenta cuando se hace un cambio en el spiner, o mas bien se filtra
-                        ArrayList<String> tickets = new ArrayList<String>();
+                        ArrayList<String> elements = new ArrayList<String>();
                         for (int i = 0; i < jsonObject.length()-1; i++) {
                             //bro estos de aqui son para que tu verifiques por la consola si si sale lo esperado
                             System.out.println(i);
@@ -81,9 +82,10 @@ public class CrudTickets extends AppCompatActivity {
                         //definio el chavo
                         if(!tickets.isEmpty()){
                             ListAdapter listAdapter = new ListAdapter(tickets, this);
-                            RecyclerView recyclerView = findViewById(R.id.listRecyclerView);
+                            RecyclerView recyclerView = findViewById(R.id.rvlista);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                            recyclerView.setAdapter(listAdapter);
                         }
 
 
