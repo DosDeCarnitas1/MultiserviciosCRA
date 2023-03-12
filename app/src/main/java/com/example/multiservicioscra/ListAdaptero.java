@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
-    private List<ListElement> mData;
+public class ListAdaptero extends RecyclerView.Adapter<ListAdaptero.ViewHolder>{
+    private List<ListElemento> mData;
     private LayoutInflater mInflater;
     private Context context;
 
-    public ListAdapter(List<ListElement> itemList, Context context){
+    public ListAdaptero(List<ListElemento> itemList, Context context){
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.mData = itemList;
@@ -27,19 +27,19 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
 
 
     @Override
-    public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public ListAdaptero.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = mInflater.inflate(R.layout.list_element, null);
-        return new ListAdapter.ViewHolder(view);
+        return new ListAdaptero.ViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(final ListAdapter.ViewHolder holder, final int position){
+    public void onBindViewHolder(final ListAdaptero.ViewHolder holder, final int position){
         holder.bindData(mData.get(position));
     }
 
 
-    public void setItems(List<ListElement> items){mData = items;}
+    public void setItems(List<ListElemento> items){mData = items;}
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -54,7 +54,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
             estado = itemView.findViewById(R.id.status);
         }
 
-        void bindData(final ListElement item){
+        void bindData(final ListElemento item){
             titulo.setText(item.getTitulo());
             descripcion.setText(item.getDescripcion());
             estado.setText(item.getEstado());

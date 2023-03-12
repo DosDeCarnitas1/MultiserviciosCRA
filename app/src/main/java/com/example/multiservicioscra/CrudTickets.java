@@ -35,7 +35,7 @@ public class CrudTickets extends AppCompatActivity {
     RequestQueue requestQueue;
     ArrayAdapter arrayAdapter;
 
-    List<ListElement> tickets;
+    List<ListElemento> tickets;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +59,7 @@ public class CrudTickets extends AppCompatActivity {
                     try {
                         //se le resta uno a la longitud del json porque el primer campo son los "estados" los cuales no son tickets
                         //cosa que se presenta cuando se hace un cambio en el spiner, o mas bien se filtra
-                        ArrayList<String> elements = new ArrayList<String>();
+                        tickets = new ArrayList<>();
                         for (int i = 0; i < jsonObject.length()-1; i++) {
                             //bro estos de aqui son para que tu verifiques por la consola si si sale lo esperado
                             System.out.println(i);
@@ -73,7 +73,9 @@ public class CrudTickets extends AppCompatActivity {
                                 //tendriamos que elejir que columnas se pasan, para que cuando lo metamos a el listadapter, los
                                 //datos que devuelve el php coincidan con los campos que tu definiste
 
-                                tickets.add(jsonObject.getJSONObject(index).toString());
+                                tickets.add(new ListElemento(jsonObject.getJSONObject(index).getString("titulo"),
+                                                             jsonObject.getJSONObject(index).getString("descripcion"),
+                                                             jsonObject.getJSONObject(index).getString("estado")));
                             }
                         }
                         //EN ESTA parte intente meter lo que el chavo mete en el minuto 27:39.
@@ -81,10 +83,10 @@ public class CrudTickets extends AppCompatActivity {
                         //van a aparecer muchos errores si no me equivoco, es por que las clases son las que
                         //definio el chavo
                         if(!tickets.isEmpty()){
-                            ListAdapter listAdapter = new ListAdapter(tickets, this);
+                            ListAdaptero listAdapter = new ListAdaptero(tickets, CrudTickets.this);
                             RecyclerView recyclerView = findViewById(R.id.rvlista);
                             recyclerView.setHasFixedSize(true);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                            recyclerView.setLayoutManager(new LinearLayoutManager(CrudTickets.this));
                             recyclerView.setAdapter(listAdapter);
                         }
 

@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
                 //la ip 10.0.2.2 android la reconoce como localhost
                 //inicioSesion("http://10.0.2.2:8080/ejemplomovil/validaentradaMovil.php?usuario="+ etusuario.getText().toString());
                 //utilizando la ip de la laptop o computadora.
-                inicioSesion("http://192.168.100.76/MCRAAndroidphps/consultaUsuario.php?usuario="+ etusuario.getText().toString());
-                //inicioSesion("http://192.168.100.9/MCRAAndroidphps/consultaUsuario.php?usuario="+ etusuario.getText().toString());
+                //inicioSesion("http://192.168.100.76/MCRAAndroidphps/consultaUsuario.php?usuario="+ etusuario.getText().toString());
+                inicioSesion("http://192.168.100.9/MCRAAndroidphps/consultaUsuario.php?usuario="+ etusuario.getText().toString());
                 //conexion desde el dispositivo movil deben usar un hosting (conexion segura https) o tener un certificado digital (SSL)
                 //inicioSesion("https://ip o nombre_domino del hosting/ejemplomovil/validaentradaMovil.php?usuario="+ etusuario.getText().toString());
             }   
