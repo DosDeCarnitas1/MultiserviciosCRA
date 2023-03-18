@@ -15,7 +15,7 @@
         android:fontFamily="@font/amaranth"
         android:text="Inicio de sesión"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,8 +70,8 @@
 
     <Button
         android:id="@+id/btningresar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="173dp"
+        android:layout_height="53dp"
         android:backgroundTint="@android:color/holo_blue_light"
         android:cursorVisible="false"
         android:drawableRight="@drawable/login"
@@ -80,10 +80,9 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.922" />
+        app:layout_constraintVertical_bias="0.927" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -96,6 +95,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.163" />
+
+    <CheckBox
+        android:id="@+id/cbxRecuerdame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="Recuerdame"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.808" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,13 +15,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:foreground="?attr/selectableItemBackgroundBorderless">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:padding="6dp">
+            android:padding="6dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
 
             <ImageView
                 android:id="@+id/logo"
@@ -48,6 +50,13 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/idTicket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:visibility="gone" />
+
+                <TextView
                     android:id="@+id/titulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -62,7 +71,7 @@
                     android:id="@+id/descripcion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="50dp"
+                    android:layout_marginBottom="25dp"
                     android:fontFamily="@font/amaranth"
                     android:text="Descripcion"
                     android:textColor="@color/black"
@@ -73,12 +82,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
+                    android:background="#ece7e7"
                     android:fontFamily="@font/amaranth"
                     android:text="Estado"
                     android:textColor="@color/black"
                     android:textSize="10sp"
-                    android:textStyle="bold"
-                    android:background="#ece7e7"/>
+                    android:textStyle="bold" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

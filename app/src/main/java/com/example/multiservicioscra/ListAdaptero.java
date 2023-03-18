@@ -41,6 +41,11 @@ public class ListAdaptero extends RecyclerView.Adapter<ListAdaptero.ViewHolder>{
 
     public void setItems(List<ListElemento> items){mData = items;}
 
+    //metodos para ver si jala lo del swipe-to-refresh
+    public void clear() {
+        mData.clear();
+        notifyDataSetChanged();
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView IconImage;
