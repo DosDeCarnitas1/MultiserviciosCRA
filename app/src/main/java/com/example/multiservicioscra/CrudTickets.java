@@ -73,7 +73,9 @@ public class CrudTickets extends AppCompatActivity {
                                 //tendriamos que elejir que columnas se pasan, para que cuando lo metamos a el listadapter, los
                                 //datos que devuelve el php coincidan con los campos que tu definiste
 
-                                tickets.add(jsonObject.getJSONObject(index).toString());
+                                tickets.add(new ListElement(jsonObject.getJSONObject(index).getString("titulo"),
+                                                            jsonObject.getJSONObject(index).getString("descripcion"),
+                                                            jsonObject.getJSONObject(index).getString("estado")));
                             }
                         }
                         //EN ESTA parte intente meter lo que el chavo mete en el minuto 27:39.
@@ -81,10 +83,10 @@ public class CrudTickets extends AppCompatActivity {
                         //van a aparecer muchos errores si no me equivoco, es por que las clases son las que
                         //definio el chavo
                         if(!tickets.isEmpty()){
-                            ListAdapter listAdapter = new ListAdapter(tickets, this);
+                            ListAdapter listAdapter = new ListAdapter(tickets, CrudTickets.this);
                             RecyclerView recyclerView = findViewById(R.id.rvlista);
                             recyclerView.setHasFixedSize(true);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                            recyclerView.setLayoutManager(new LinearLayoutManager(CrudTickets.this));
                             recyclerView.setAdapter(listAdapter);
                         }
 

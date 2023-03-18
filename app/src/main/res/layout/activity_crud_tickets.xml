@@ -13,7 +13,7 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/amaranth"
+        android:fontFamily="@font/audiowide"
         android:text="TICKETS"
         android:textColor="@color/black"
         android:textSize="20sp"

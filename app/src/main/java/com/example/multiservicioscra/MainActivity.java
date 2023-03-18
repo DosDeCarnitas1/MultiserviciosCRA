@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Button btningresar;
     RequestQueue requestQueue;
 
-    //String ip = "192.168.100.76";
+    //String ip = "192.168.100.75";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
