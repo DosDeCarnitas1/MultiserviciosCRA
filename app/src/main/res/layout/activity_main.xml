@@ -12,10 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autoSizeTextType="none"
-        android:fontFamily="@font/audiowide"
+        android:fontFamily="@font/abel"
         android:text="Inicio de sesión"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/black"
         android:ems="10"
-        android:fontFamily="@font/amaranth"
+        android:fontFamily="@font/abel"
         android:hint="Usuario:"
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -55,7 +55,7 @@
         android:layout_marginBottom="48dp"
         android:backgroundTint="@color/black"
         android:ems="10"
-        android:fontFamily="@font/amaranth"
+        android:fontFamily="@font/abel"
         android:hint="Contraseña:"
         android:inputType="textPassword"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -75,7 +75,7 @@
         android:backgroundTint="@android:color/holo_blue_light"
         android:cursorVisible="false"
         android:drawableRight="@drawable/login"
-        android:fontFamily="@font/amaranth"
+        android:fontFamily="@font/abel"
         android:text="Iniciar sesión"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -96,6 +96,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.163" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
