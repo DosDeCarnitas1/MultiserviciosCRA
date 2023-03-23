@@ -24,14 +24,14 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
     public static int usuarioIdParaConsultas = 0;
     public static String usuarioTipoParaConsultas = "";
+    public static String ip = "192.168.1.20";
     EditText etusuario,etcontraseña;
     Button btningresar;
     CheckBox cbxRecuerdame;
     RequestQueue requestQueue;
 
 //    String ip = "192.168.100.76";
-    String ip = "192.168.100.9";
-//    String ip = "172.16.100.58";
+//    String ip = "192.168.100.9";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

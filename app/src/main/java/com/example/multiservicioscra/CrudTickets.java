@@ -2,6 +2,7 @@ package com.example.multiservicioscra;
 
 import static com.example.multiservicioscra.MainActivity.usuarioIdParaConsultas;
 import static com.example.multiservicioscra.MainActivity.usuarioTipoParaConsultas;
+import static com.example.multiservicioscra.MainActivity.ip;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +37,8 @@ public class CrudTickets extends AppCompatActivity {
     Spinner spEstado;
 
     //pon tu ip aqui
-    String ip = "192.168.100.9";
-//    String ip = "172.16.100.58";
+//    String ip = "192.168.100.9";
+//    String ip = "192.168.90.111";
 
     RequestQueue requestQueue;
     ArrayAdapter arrayAdapter;
@@ -131,12 +133,25 @@ public class CrudTickets extends AppCompatActivity {
                 new RecyclerItemClickListener(CrudTickets.this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         try {
-                            String toaste = "posicion: "+position;
-                            String posicion = Integer.toString(position);
-                            System.out.println(jsonObject.getJSONObject(posicion).getString("created_at"));
-                            Toast.makeText(getApplicationContext(),toaste,Toast.LENGTH_LONG).show();
+//                            String toaste = "posicion: "+position;
+//                            String posicion = Integer.toString(position);
+//                            System.out.println(jsonObject.getJSONObject(posicion).getString("created_at"));
+//                            Toast.makeText(getApplicationContext(),toaste,Toast.LENGTH_LONG).show();
 
                             Intent v = new Intent(CrudTickets.this, DetalleTickets.class);
+
+                            for (int i = 0; i < jsonObject.length(); i++) {
+                                System.out.println("Actual:" +jsonObject.getJSONObject(""+i).getInt("id"));
+                                System.out.println("Seleccionado: "+tickets.get(position).getId());
+                                System.out.println(" ");
+                                System.out.println("descAct: "+jsonObject.getJSONObject(""+i).getString("descripcion"));
+                                System.out.println("descSelecc: "+tickets.get(position).getDescripcion());
+                                if(jsonObject.getJSONObject(""+i).getInt("id") == tickets.get(position).getId()){
+                                    v.putExtra("ticket",jsonObject.getJSONObject(""+i).toString());
+                                    break;
+                                }
+                            }
+
                             startActivity(v);
 
                         }catch (Exception e){
@@ -242,7 +257,7 @@ public class CrudTickets extends AppCompatActivity {
                     System.out.println("titulo: "+jsonObject.getJSONObject(index).getString("titulo"));
                     System.out.println("descr: "+jsonObject.getJSONObject(index).getString("descripcion"));
                     System.out.println("estado: "+jsonObject.getJSONObject(index).getString("estado"));
-                    System.out.println("estado: "+jsonObject.getJSONObject(index).getInt("id"));
+                    System.out.println("id: "+jsonObject.getJSONObject(index).getInt("id"));
 
                     tickets.add(new ListElemento(jsonObject.getJSONObject(index).getString("titulo"),
                                                  jsonObject.getJSONObject(index).getString("descripcion"),

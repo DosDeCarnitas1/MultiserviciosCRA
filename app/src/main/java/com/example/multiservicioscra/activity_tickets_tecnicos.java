@@ -2,6 +2,7 @@ package com.example.multiservicioscra;
 
 import static com.example.multiservicioscra.MainActivity.usuarioIdParaConsultas;
 import static com.example.multiservicioscra.MainActivity.usuarioTipoParaConsultas;
+import static com.example.multiservicioscra.MainActivity.ip;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,8 +28,8 @@ import java.util.List;
 
 public class activity_tickets_tecnicos extends AppCompatActivity {
     Bundle b;
-    String ip = "192.168.100.9";
-//    String ip = "172.16.100.159";
+//    String ip = "192.168.100.9";
+//    String ip = "192.168.90.111";
     RequestQueue requestQueue;
     ArrayAdapter arrayAdapter;
     List<ListElemento> tickets;

@@ -9,9 +9,10 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="414dp"
-        android:layout_height="610dp"
+        android:layout_width="393dp"
+        android:layout_height="593dp"
         android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCambiarEstado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16">
@@ -25,12 +26,12 @@
                 android:id="@+id/tvTituloTicket"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/amaranth"
                 android:text="Titulo placeholder"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_marginLeft="20dp"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvEspacio"
@@ -38,9 +39,9 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/amaranth"
                 android:text=""
-                android:visibility="invisible"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:visibility="invisible" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,12 +52,12 @@
                     android:id="@+id/tvTituloFechaCreado"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
                     android:fontFamily="@font/amaranth"
                     android:text="Creado el: "
-                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvFechaCreado"
@@ -74,9 +75,9 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/amaranth"
                 android:text=""
-                android:visibility="invisible"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:visibility="invisible" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -87,12 +88,12 @@
                     android:id="@+id/tvTituloFechaActualizado"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
                     android:fontFamily="@font/amaranth"
                     android:text="Actualizado el: "
-                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvFechaActualizado"
@@ -110,29 +111,29 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/amaranth"
                 android:text=""
-                android:visibility="invisible"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tvTituloDescripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/amaranth"
                 android:text="Descripcion:"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginLeft="20dp"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvDescripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/amaranth"
                 android:text="Descripcion placeholder"
                 android:textColor="@color/black"
-                android:layout_marginLeft="20dp"
                 android:textSize="24sp" />
 
             <TextView
@@ -141,9 +142,9 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/amaranth"
                 android:text=""
-                android:visibility="invisible"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:visibility="invisible" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -154,12 +155,12 @@
                     android:id="@+id/tvTituloZona"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
                     android:fontFamily="@font/amaranth"
                     android:text="Zona:"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvZona"
@@ -171,15 +172,16 @@
                     android:textSize="24sp" />
 
             </LinearLayout>
+
             <TextView
                 android:id="@+id/tvEspacio4"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/amaranth"
                 android:text=""
-                android:visibility="invisible"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:visibility="invisible" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -190,12 +192,12 @@
                     android:id="@+id/tvTituloTecnicoAsig"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
                     android:fontFamily="@font/amaranth"
                     android:text="Tecnico Asignado:"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="20dp"
-                    android:textStyle="bold"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvTecnicoAsig"
@@ -227,13 +229,13 @@
         app:layout_constraintVertical_bias="0.022" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="349dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="3dp"
+        android:id="@+id/btnCambiarEstado"
+        android:layout_width="375dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="4dp"
         android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
