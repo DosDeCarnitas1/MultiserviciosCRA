@@ -44,7 +44,7 @@ public class MenuTecnico extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent v = new Intent(getApplicationContext(), activity_tickets_tecnicos.class);
-                v.putExtra("Estado", "Completado");
+                v.putExtra("Estado", "Inactivo");
                 v.putExtra("Titulo", "Tickets Completados");
                 startActivity(v);
             }

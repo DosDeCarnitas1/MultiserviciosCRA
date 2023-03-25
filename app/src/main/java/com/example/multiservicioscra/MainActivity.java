@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
     public static int usuarioIdParaConsultas = 0;
     public static String usuarioTipoParaConsultas = "";
-    public static String ip = "192.168.1.20";
+    public static String ip = "192.168.100.9";
     EditText etusuario,etcontraseña;
     Button btningresar;
     CheckBox cbxRecuerdame;

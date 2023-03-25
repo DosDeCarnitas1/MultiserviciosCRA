@@ -35,11 +35,6 @@ public class CrudTickets extends AppCompatActivity {
 
     private SwipeRefreshLayout swipeContainer;
     Spinner spEstado;
-
-    //pon tu ip aqui
-//    String ip = "192.168.100.9";
-//    String ip = "192.168.90.111";
-
     RequestQueue requestQueue;
     ArrayAdapter arrayAdapter;
     List<ListElemento> tickets;

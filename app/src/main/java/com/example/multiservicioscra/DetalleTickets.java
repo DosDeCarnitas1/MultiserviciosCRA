@@ -104,6 +104,15 @@ public class DetalleTickets extends AppCompatActivity {
                             System.out.println("si \n"+
                                     "substring: "+sigEstado.substring(index, index+estados[i].length())+
                                     "\nestados: "+estados[i]);
+                            String estadO = sigEstado.substring(index, index+estados[i].length());
+                            try {
+                                actualizarEstado("http://"+ip+"/MCRAAndroidphps/actualizarTicket(estado).php",
+                                                 estadO,
+                                                 jsonObj.getString("id"));
+
+                            }catch (Exception e){
+                                System.out.println(e);
+                            }
                         }
                     }
                 }
@@ -120,10 +129,11 @@ public class DetalleTickets extends AppCompatActivity {
                 btnCambiarEstado.setText("Cambiar a Inactivo(Completado)");
                 break;
             case "Activo":
-                btnCambiarEstado.setText("Cambiar a Pendiente");
+                btnCambiarEstado.setText("Asignalo primero");
+                btnCambiarEstado.setEnabled(false);
                 break;
             case "Inactivo":
-                btnCambiarEstado.setText(jsonObj.getString("estado"));
+                btnCambiarEstado.setText("Inactivo");
                 btnCambiarEstado.setEnabled(false);
                 break;
         }
@@ -135,6 +145,13 @@ public class DetalleTickets extends AppCompatActivity {
             public void onResponse(String response) { //en caso de una respuesta exitosa
                 System.out.println(response);
                 if (response.equals("1")) {
+                    try {
+                        jsonObj.put("estado", "Inactivo");
+                        btnCambiarEstado.setText("Inactivo");
+                        actualizarBoton();
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
                     Toast.makeText(getApplicationContext(), "Operación exitosa", Toast.LENGTH_LONG).show();
 
                 } else {

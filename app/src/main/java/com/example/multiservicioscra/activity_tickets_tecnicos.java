@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,8 +35,9 @@ public class activity_tickets_tecnicos extends AppCompatActivity {
     RequestQueue requestQueue;
     ArrayAdapter arrayAdapter;
     List<ListElemento> tickets;
-
+    RecyclerView recyclerView;
     TextView tvTicketsTecnico;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,8 @@ public class activity_tickets_tecnicos extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
 
         tvTicketsTecnico = findViewById(R.id.tvTicketsTecnicos);
+
+        recyclerView = findViewById(R.id.rvTicketsTecnicos);
 
         b = getIntent().getExtras();
 
@@ -53,6 +58,44 @@ public class activity_tickets_tecnicos extends AppCompatActivity {
 
         desplegarTickets("http://"+ip+"/MCRAAndroidphps/consultarTickets.php?tipoUsuario="+usuarioTipoParaConsultas+"&id_usuario="+usuarioIdParaConsultas,
                          b.getString("Estado"));
+
+
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(activity_tickets_tecnicos.this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        try {
+                            String json = jsonObject.toString();
+//                            String toaste = "posicion: "+position;
+//                            String posicion = Integer.toString(position);
+//                            System.out.println(jsonObject.getJSONObject(posicion).getString("created_at"));
+//                            Toast.makeText(getApplicationContext(),toaste,Toast.LENGTH_LONG).show();
+
+                            Intent v = new Intent(activity_tickets_tecnicos.this, DetalleTickets.class);
+
+                            for (int i = 0; i < jsonObject.length(); i++) {
+                                System.out.println("Actual:" +jsonObject.getJSONObject(""+i).getInt("id"));
+                                System.out.println("Seleccionado: "+tickets.get(position).getId());
+                                System.out.println(" ");
+                                System.out.println("descAct: "+jsonObject.getJSONObject(""+i).getString("descripcion"));
+                                System.out.println("descSelecc: "+tickets.get(position).getDescripcion());
+                                if(jsonObject.getJSONObject(""+i).getInt("id") == tickets.get(position).getId()){
+                                    v.putExtra("ticket",jsonObject.getJSONObject(""+i).toString());
+                                    break;
+                                }
+                            }
+
+                            startActivity(v);
+
+                        }catch (Exception e){
+                            System.out.println(e);
+                        }
+                    }
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
     }
     private JSONObject jsonObject= null;
 
@@ -64,33 +107,38 @@ public class activity_tickets_tecnicos extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         String filtro = estado;
                         try {
-                            System.out.println("respopnse: "+response.getJSONObject(0));
-                            System.out.println("lenght: "+response.length());
-                            System.out.println("is: "+response.getJSONObject(0).getJSONObject("0").getString("estado")+" == "+filtro);
+
+                            for (int i = 0; i < response.length(); i++) {
+                                jsonObject = response.getJSONObject(i);
+                            }
+
+//                            System.out.println("respopnse: "+response.getJSONObject(0));
+//                            System.out.println("lenght: "+response.length());
+//                            System.out.println("is: "+response.getJSONObject(0).getJSONObject("0").getString("estado")+" == "+filtro);
                             //se le resta uno a la longitud del json porque el primer campo son los "estados" los cuales no son tickets
                             //cosa que se presenta cuando se hace un cambio en el spiner, o mas bien se filtra
                             tickets = new ArrayList<>();
-                            for (int i = 0; i < response.length(); i++) {
+                            for (int i = 0; i < jsonObject.length()-1; i++) {
                                 //bro estos de aqui son para que tu verifiques por la consola si si sale lo esperado
                                 System.out.println(i);
                                 String index = Integer.toString(i);
-                                System.out.println(response.getJSONObject(i).getJSONObject(index));
+                                System.out.println(jsonObject.getJSONObject(index));
 
                                 //meto todos las concidencias en la lista
-                                if(response.getJSONObject(i).getJSONObject(index).getString("estado").equals(filtro)){
+                                if(jsonObject.getJSONObject(index).getString("estado").equals(filtro)){
                                     //esta parte creo que va a ser la mas dificil de hacer, tenemos que ver cuales
                                     //fueron los campos que definiste, porque yo te devuelvo todas las columnas por cada registro
                                     //tendriamos que elejir que columnas se pasan, para que cuando lo metamos a el listadapter, los
                                     //datos que devuelve el php coincidan con los campos que tu definiste
-                                    System.out.println("titulo: "+response.getJSONObject(i).getJSONObject(index).getString("titulo"));
-                                    System.out.println("descr: "+response.getJSONObject(i).getJSONObject(index).getString("descripcion"));
-                                    System.out.println("estado: "+response.getJSONObject(i).getJSONObject(index).getString("estado"));
-                                    System.out.println("estado: "+response.getJSONObject(i).getJSONObject(index).getInt("id"));
+                                    System.out.println("titulo: "+jsonObject.getJSONObject(index).getString("titulo"));
+                                    System.out.println("descr: "+jsonObject.getJSONObject(index).getString("descripcion"));
+                                    System.out.println("estado: "+jsonObject.getJSONObject(index).getString("estado"));
+                                    System.out.println("estado: "+jsonObject.getJSONObject(index).getInt("id"));
 
-                                    tickets.add(new ListElemento(response.getJSONObject(i).getJSONObject(index).getString("titulo"),
-                                                                 response.getJSONObject(i).getJSONObject(index).getString("descripcion"),
-                                                                 response.getJSONObject(i).getJSONObject(index).getString("estado"),
-                                                                 response.getJSONObject(i).getJSONObject(index).getInt("id")));
+                                    tickets.add(new ListElemento(jsonObject.getJSONObject(index).getString("titulo"),
+                                                                 jsonObject.getJSONObject(index).getString("descripcion"),
+                                                                 jsonObject.getJSONObject(index).getString("estado"),
+                                                                 jsonObject.getJSONObject(index).getInt("id")));
                                 }
                             }
                             //EN ESTA parte intente meter lo que el chavo mete en el minuto 27:39.
@@ -99,7 +147,7 @@ public class activity_tickets_tecnicos extends AppCompatActivity {
                             //definio el chavo
                             if(!tickets.isEmpty()){
                                 ListAdaptero listAdapter = new ListAdaptero(tickets, activity_tickets_tecnicos.this);
-                                RecyclerView recyclerView = findViewById(R.id.rvTicketsTecnicos);
+                                recyclerView = findViewById(R.id.rvTicketsTecnicos);
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(activity_tickets_tecnicos.this));
                                 recyclerView.setAdapter(listAdapter);
