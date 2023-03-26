@@ -26,6 +26,12 @@
         </intent-filter>
         </activity>
         <activity
+            android:name=".DetalleTickets"
+            android:exported="false" />
+        <activity
+            android:name=".activity_tickets_tecnicos"
+            android:exported="false" />
+        <activity
             android:name=".CrudRefacciones"
             android:exported="false" />
         <activity

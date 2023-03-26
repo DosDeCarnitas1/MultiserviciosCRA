@@ -117,9 +117,13 @@ public class CrudTickets extends AppCompatActivity {
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.
+                int indexSp = spEstado.getSelectedItemPosition();
+                System.out.println();
                 filtrar();
                 llenarSpinnerEstados("http://"+ip+"/MCRAAndroidphps/consultarTickets.php?tipoUsuario="+usuarioTipoParaConsultas+"&id_usuario="+usuarioIdParaConsultas);
+                System.out.println("indexSP: "+indexSp);
                 swipeContainer.setRefreshing(false);
+                spEstado.setSelection(indexSp);
 
             }
         });
