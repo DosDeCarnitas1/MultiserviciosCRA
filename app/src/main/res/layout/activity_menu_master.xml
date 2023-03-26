@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="26dp"
-        android:layout_height="27dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.042"
@@ -23,7 +23,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/abel"
+        android:fontFamily="@font/amaranth"
         android:text="Supervisor Alan Carrasco"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -35,8 +35,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="26dp"
-        android:layout_height="27dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.958"
@@ -47,86 +47,89 @@
 
     <ImageButton
         android:id="@+id/ibtntecnicos"
-        android:layout_width="290dp"
-        android:layout_height="120dp"
+        android:layout_width="380dp"
+        android:layout_height="190dp"
         android:adjustViewBounds="true"
         android:background="@drawable/personal"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:scaleType="centerCrop"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
+        app:layout_constraintVertical_bias="0.188" />
 
     <ImageButton
         android:id="@+id/ibtntickets"
-        android:layout_width="290dp"
-        android:layout_height="120dp"
+        android:layout_width="380dp"
+        android:layout_height="190dp"
         android:background="@drawable/solicitud"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561" />
+        app:layout_constraintVertical_bias="0.539"
+        android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
     <ImageButton
         android:id="@+id/ibtnrefacciones"
-        android:layout_width="290dp"
-        android:layout_height="120dp"
+        android:layout_width="380dp"
+        android:layout_height="190dp"
         android:background="@drawable/partes"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939" />
+        app:layout_constraintVertical_bias="0.89"
+        android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="125dp"
-        android:layout_height="23dp"
-        android:fontFamily="@font/abel"
+        android:layout_width="121dp"
+        android:layout_height="39dp"
+        android:fontFamily="@font/amaranth"
         android:text="TECNICOS"
-        android:textSize="24sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307" />
+        app:layout_constraintVertical_bias="0.336" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/abel"
+        android:fontFamily="@font/amaranth"
         android:text="REFACCIONES"
-        android:textSize="24sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.861"
+        app:layout_constraintHorizontal_bias="0.836"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.798" />
+        app:layout_constraintVertical_bias="0.719" />
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="108dp"
-        android:layout_height="25dp"
-        android:fontFamily="@font/abel"
+        android:layout_width="106dp"
+        android:layout_height="33dp"
+        android:fontFamily="@font/amaranth"
         android:text="TICKETS"
-        android:textSize="24sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.917"
+        app:layout_constraintHorizontal_bias="0.816"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.467" />
+        app:layout_constraintVertical_bias="0.457" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

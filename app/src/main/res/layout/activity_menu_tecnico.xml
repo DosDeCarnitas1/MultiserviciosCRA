@@ -35,9 +35,9 @@
         app:layout_constraintVertical_bias="0.022" />
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="290dp"
-        android:layout_height="120dp"
+        android:id="@+id/ibtnTecnicosSA"
+        android:layout_width="380dp"
+        android:layout_height="190dp"
         android:backgroundTint="@color/cardview_shadow_end_color"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,9 +52,9 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="More Fonts..."
+        android:fontFamily="@font/amaranth"
         android:text="SERVICIOS ACTIVOS"
-        android:textSize="14sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.841"
@@ -63,17 +63,17 @@
         app:layout_constraintVertical_bias="0.124" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="290dp"
-        android:layout_height="120dp"
+        android:id="@+id/ibtnTecnicosSC"
+        android:layout_width="380dp"
+        android:layout_height="190dp"
         android:backgroundTint="@color/cardview_shadow_end_color"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.522"
+        app:layout_constraintVertical_bias="0.499"
         app:srcCompat="@drawable/completado" />
 
     <TextView
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/amaranth"
         android:text="SERVICIOS COMPLETADOS"
-        android:textSize="13sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.196"
@@ -91,17 +91,17 @@
         app:layout_constraintVertical_bias="0.499" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="290dp"
-        android:layout_height="120dp"
+        android:id="@+id/ibtnTecnicosSP"
+        android:layout_width="380dp"
+        android:layout_height="190dp"
         android:backgroundTint="@color/cardview_shadow_end_color"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88"
+        app:layout_constraintVertical_bias="0.85"
         app:srcCompat="@drawable/pendiente" />
 
     <TextView
@@ -110,7 +110,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/amaranth"
         android:text="SERVICIOS PENDIENTES"
-        android:textSize="14sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.802"

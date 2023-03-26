@@ -1,6 +1,7 @@
 package com.example.multiservicioscra;
 
 import androidx.appcompat.app.AppCompatActivity;
+import static com.example.multiservicioscra.MainActivity.ip;
 
 import android.os.Bundle;
 import android.view.View;
@@ -34,7 +35,8 @@ public class CrudTecnicos extends AppCompatActivity {
 
     RequestQueue requestQueue;
 
-    String ip = "192.168.100.9";
+//    String ip = "192.168.100.9";
+//    String ip = "192.168.90.111";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

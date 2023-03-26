@@ -3,9 +3,11 @@ package com.example.multiservicioscra;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,11 +24,15 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
     public static int usuarioIdParaConsultas = 0;
     public static String usuarioTipoParaConsultas = "";
+    public static String ip = "192.168.100.9";
     EditText etusuario,etcontraseña;
     Button btningresar;
+    CheckBox cbxRecuerdame;
     RequestQueue requestQueue;
 
-    //String ip = "192.168.100.75";
+//    String ip = "192.168.100.76";
+//    String ip = "192.168.100.9";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +41,24 @@ public class MainActivity extends AppCompatActivity {
         etusuario = findViewById(R.id.etusuario);
         etcontraseña = findViewById(R.id.etcontraseña);
         btningresar = findViewById(R.id.btningresar);
+        cbxRecuerdame = findViewById(R.id.cbxRecuerdame);
         requestQueue = Volley.newRequestQueue(this);
 
+        if(true){
+            SharedPreferences shPf = getSharedPreferences("credenciales",MainActivity.MODE_PRIVATE);
+            SharedPreferences.Editor editor = shPf.edit();
+            editor.clear();
+            editor.apply();
+        }
+
+
+        SharedPreferences shPf = getSharedPreferences("credenciales",MainActivity.MODE_PRIVATE);
+        String usuario = shPf.getString("user", null);
+        if(usuario != null){
+            etusuario.setText(shPf.getString("user", null));
+            etcontraseña.setText(shPf.getString("password", null));
+            inicioSesion("http://"+ip+"/MCRAAndroidphps/consultaUsuario.php?usuario="+ etusuario.getText().toString());
+        }
 
         btningresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,8 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 //la ip 10.0.2.2 android la reconoce como localhost
                 //inicioSesion("http://10.0.2.2:8080/ejemplomovil/validaentradaMovil.php?usuario="+ etusuario.getText().toString());
                 //utilizando la ip de la laptop o computadora.
-                inicioSesion("http://192.168.100.76/MCRAAndroidphps/consultaUsuario.php?usuario="+ etusuario.getText().toString());
-                //inicioSesion("http://192.168.100.9/MCRAAndroidphps/consultaUsuario.php?usuario="+ etusuario.getText().toString());
+                //inicioSesion("http://192.168.100.76/MCRAAndroidphps/consultaUsuario.php?usuario="+ etusuario.getText().toString());
+                inicioSesion("http://"+ip+"/MCRAAndroidphps/consultaUsuario.php?usuario="+ etusuario.getText().toString());
+//                inicioSesion("http://192.168.90.78/MCRAAndroidphps/consultaUsuario.php?usuario="+ etusuario.getText().toString());
                 //conexion desde el dispositivo movil deben usar un hosting (conexion segura https) o tener un certificado digital (SSL)
                 //inicioSesion("https://ip o nombre_domino del hosting/ejemplomovil/validaentradaMovil.php?usuario="+ etusuario.getText().toString());
             }   
@@ -79,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
                                     else{
                                         Toast.makeText(getApplicationContext(),jsonObject.getString("nombre")+" "+jsonObject.getString("apellido"),Toast.LENGTH_LONG).show();
                                         ventana = new Intent(MainActivity.this, MenuMaster.class);
+                                    }
+
+                                    if(cbxRecuerdame.isChecked()){
+                                        recuerdame();
                                     }
                                     startActivity(ventana);
                                 }
@@ -116,4 +143,17 @@ public class MainActivity extends AppCompatActivity {
 
       //  android:padding="10dp">
 
+
+    private void recuerdame(){
+        SharedPreferences shPf = getSharedPreferences("credenciales",MainActivity.MODE_PRIVATE);
+
+        String password = etcontraseña.getText().toString();
+        String usuario = etusuario.getText().toString();
+
+        SharedPreferences.Editor editor = shPf.edit();
+        editor.putString("user", usuario);
+        editor.putString("password", password);
+
+        editor.commit();
+    }
 }
