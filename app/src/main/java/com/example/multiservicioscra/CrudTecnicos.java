@@ -60,7 +60,7 @@ public class CrudTecnicos extends AppCompatActivity {
         ibtnconsultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                consulta("http://" + ip + "/MCRAAndroidphps/consultaUsuario.php?codigo=" + etusuarioEmp.getText());
+                consulta("http://" + ip + "/MCRAAndroidphps/consultaUsuario.php?usuario=" + etusuarioEmp.getText());
             }
         });//cierre del onclick consulta
 
@@ -74,14 +74,14 @@ public class CrudTecnicos extends AppCompatActivity {
         ibtnmodificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                operaciones("http://" + ip + "/ejemplomovil/modificaEmp.php");
+                operaciones("http://" + ip + "/MCRAAndroidphps/actualizarTecnico.php");
             }
         });//cierre del onclick modificar
 
         ibtneliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                operaciones("http://" + ip + "/ejemplomovil/eliminaEmp.php");
+                operaciones("http://" + ip + "/MCRAAndroidphps/eliminarTecnico.php");
             }
         });//cierre del onclick eliminar
     }//cierre del metodo oncreate
@@ -143,8 +143,9 @@ public class CrudTecnicos extends AppCompatActivity {
                                 etnombreEmp.setText(jsonObject.getString("nombre"));
                                 etapellidoEmp.setText(jsonObject.getString("apellido"));
                                 etpuesto.setText(jsonObject.getString("puesto"));
-                                etusuarioEmp.setText(jsonObject.getString("usuario"));
-                                etcontraseñaEmp.setText(jsonObject.getString("contraseña"));
+                                etusuarioEmp.setText(jsonObject.getString("name"));
+                                etcontraseñaEmp.setText(jsonObject.getString("password"));
+                                System.out.println("contraseña: "+jsonObject.getString("password"));
 
                             }//cierre del try
                             catch (JSONException e) {
