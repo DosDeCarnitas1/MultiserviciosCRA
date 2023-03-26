@@ -49,9 +49,9 @@ public class CrudRefacciones extends AppCompatActivity {
 
         System.out.println("Este es el id del usuario: "+usuarioIdParaConsultas);
         System.out.println("Este es el tipo del usuario: "+usuarioTipoParaConsultas);
-        System.out.println("http://"+ip+"/MCRAAndroidphps/consultarRefacciones.php?tipoUsuario="+usuarioTipoParaConsultas+"&id_usuario="+usuarioIdParaConsultas);
+        System.out.println("http://"+ip+"/MCRAAndroidphps/consultarRefacciones.php");
 
-        llenarSpinnerTipos("http://"+ip+"/MCRAAndroidphps/consultarRefacciones.php?tipoUsuario="+usuarioTipoParaConsultas+"&id_usuario="+usuarioIdParaConsultas);
+        llenarSpinnerTipos("http://"+ip+"/MCRAAndroidphps/consultarRefacciones.php");
 
         sprefaccion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -59,17 +59,22 @@ public class CrudRefacciones extends AppCompatActivity {
                 if(position != 0){
                     String filtrado = sprefaccion.getSelectedItem().toString();
                     try{
-                        ArrayList<String> elements = new ArrayList<String>();
+                        refacciones = new ArrayList<>();
                         for (int i = 0; i < jsonObject.length()-1; i++) {
                             System.out.println(i);
                             String index = Integer.toString(i);
                             System.out.println(jsonObject.getJSONObject(index));
 
-                            if(jsonObject.getJSONObject(index).getString("Refacciones").equals(filtrado)){
+                            if(jsonObject.getJSONObject(index).getString("tipoRefaccion").equals(filtrado)){
+                                System.out.println("nombre: "+jsonObject.getJSONObject(index).getString("nombre")+
+                                                   "cantidad: "+jsonObject.getJSONObject(index).getInt("cantidad")+
+                                                   "imagenes: "+jsonObject.getJSONObject(index).getString("imagenes"));
                                 refacciones.add(new ListRefaccion(jsonObject.getJSONObject(index).getString("nombre"),
-                                                                jsonObject.getJSONObject(index).getInt("cantidad")));
+                                                                  jsonObject.getJSONObject(index).getInt("cantidad"),
+                                                                  jsonObject.getJSONObject(index).getInt("id")));
                             }
                         }
+                                System.out.println("refaccion"+refacciones.get(0));
                         if(!refacciones.isEmpty()){
                             ListAdapter2 listAdapter2 = new ListAdapter2(refacciones, CrudRefacciones.this);
                             RecyclerView recyclerView = findViewById(R.id.rvrefaccion);
@@ -96,7 +101,7 @@ public class CrudRefacciones extends AppCompatActivity {
                 (url, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        JSONObject jsonObject = null;
+//                        JSONObject jsonObject = null;
                         System.out.println("veamos que es esto: " + jsonObject);
                         for (int i = 0; i < response.length(); i++) {
                             try {//extrayendo el objecto json de cada una de las posiciones del arreglo
@@ -104,9 +109,9 @@ public class CrudRefacciones extends AppCompatActivity {
 
                                 //llenamos el spinner segun los estados que esten disponibles para el usuario
                                 ArrayList<String> filtros = new ArrayList<String>();
-                                filtros.add("Elije una opcion");
-                                for (int j = 0; j < jsonObject.getJSONArray("Estados").length(); j++) {
-                                    filtros.add(jsonObject.getJSONArray("Estados").getString(j));
+                                filtros.add("Todas las refacciones");
+                                for (int j = 0; j < jsonObject.getJSONArray("refaccionTipo").length(); j++) {
+                                    filtros.add(jsonObject.getJSONArray("refaccionTipo").getString(j));
                                 }
 
                                 arrayAdapter = new ArrayAdapter<String>(CrudRefacciones.this, android.R.layout.simple_spinner_item, filtros);

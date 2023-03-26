@@ -5,18 +5,19 @@ public class ListRefaccion {
 
     public int cantidad;
 
-    public String id;
+    public int id;
 
-    public ListRefaccion(String nombre, int cantidad){
+    public ListRefaccion(String nombre, int cantidad, int id){
         this.nombre = nombre;
         this.cantidad = cantidad;
+        this.id = id;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

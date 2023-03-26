@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import static com.example.multiservicioscra.MainActivity.ip;
+
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -57,8 +59,8 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
 
         void bindDatas(final ListRefaccion item){
             nombreRefa.setText(item.getNombre());
-            cantidadRefa.setText(item.getCantidad());
-            Picasso.with(this).load("http://127.0.0.1:8000/img/refacciones/"+imageName).placeholder(R.drawable.refaccionPlaceholder).into(imageViewRefaccion);
+            cantidadRefa.setText(""+item.getCantidad());
+            Picasso.get().load("http://"+ip+":8000/api/imgs/"+item.getId()).placeholder(R.drawable.refaccionplaceholder).into(imageViewRefaccion);
         }
 
     }
