@@ -55,56 +55,13 @@ public class CrudTickets extends AppCompatActivity {
         System.out.println("Este es el tipo del usuario: "+usuarioTipoParaConsultas);
         System.out.println("http://"+ip+"/MCRAAndroidphps/consultarTickets.php?tipoUsuario="+usuarioTipoParaConsultas+"&id_usuario="+usuarioIdParaConsultas);
 
-        llenarSpinnerEstados("http://"+ip+"/MCRAAndroidphps/consultarTickets.php?tipoUsuario="+usuarioTipoParaConsultas+"&id_usuario="+usuarioIdParaConsultas);
-
-
+        llenarSpinnerEstados("http://"+ip+"/MCRAAndroidphps/consultarTickets.php?tipoUsuario="+usuarioTipoParaConsultas+"&id_usuario="+usuarioIdParaConsultas, true);
         spEstado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                if(position != 0) {
+//                if(position != 0) {
                     filtrar();
-//                    String filtro = spEstado.getSelectedItem().toString();
-//                    try {
-//                        //se le resta uno a la longitud del json porque el primer campo son los "estados" los cuales no son tickets
-//                        //cosa que se presenta cuando se hace un cambio en el spiner, o mas bien se filtra
-//                        tickets = new ArrayList<>();
-//                        for (int i = 0; i < jsonObject.length()-1; i++) {
-//                            //bro estos de aqui son para que tu verifiques por la consola si si sale lo esperado
-//                            System.out.println(i);
-//                            String index = Integer.toString(i);
-//                            System.out.println(jsonObject.getJSONObject(index));
-//
-//                            //meto todos las concidencias en la lista
-//                            if(jsonObject.getJSONObject(index).getString("estado").equals(filtro)){
-//                                //esta parte creo que va a ser la mas dificil de hacer, tenemos que ver cuales
-//                                //fueron los campos que definiste, porque yo te devuelvo todas las columnas por cada registro
-//                                //tendriamos que elejir que columnas se pasan, para que cuando lo metamos a el listadapter, los
-//                                //datos que devuelve el php coincidan con los campos que tu definiste
-//                                System.out.println("titulo: "+jsonObject.getJSONObject(index).getString("titulo"));
-//                                System.out.println("descr: "+jsonObject.getJSONObject(index).getString("descripcion"));
-//                                System.out.println("estado: "+jsonObject.getJSONObject(index).getString("estado"));
-//                                tickets.add(new ListElemento(jsonObject.getJSONObject(index).getString("titulo"),
-//                                                             jsonObject.getJSONObject(index).getString("descripcion"),
-//                                                             jsonObject.getJSONObject(index).getString("estado")));
-//                            }
-//                        }
-//                        //EN ESTA parte intente meter lo que el chavo mete en el minuto 27:39.
-//                        //Puede estar mal, pero mas o menos espero que sirva como guia para ver si jala xd
-//                        //van a aparecer muchos errores si no me equivoco, es por que las clases son las que
-//                        //definio el chavo
-//                        if(!tickets.isEmpty()){
-//                            ListAdaptero listAdapter = new ListAdaptero(tickets, CrudTickets.this);
-//                            RecyclerView recyclerView = findViewById(R.id.rvlista);
-//                            recyclerView.setHasFixedSize(true);
-//                            recyclerView.setLayoutManager(new LinearLayoutManager(CrudTickets.this));
-//                            recyclerView.setAdapter(listAdapter);
-//                        }
-//
-//
-//                    }catch (Exception e){
-//                        System.out.println(e);
-//                    }
-                }
+//                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -119,9 +76,9 @@ public class CrudTickets extends AppCompatActivity {
                 // once the network request has completed successfully.
                 int indexSp = spEstado.getSelectedItemPosition();
                 System.out.println();
-                filtrar();
-                llenarSpinnerEstados("http://"+ip+"/MCRAAndroidphps/consultarTickets.php?tipoUsuario="+usuarioTipoParaConsultas+"&id_usuario="+usuarioIdParaConsultas);
+                llenarSpinnerEstados("http://"+ip+"/MCRAAndroidphps/consultarTickets.php?tipoUsuario="+usuarioTipoParaConsultas+"&id_usuario="+usuarioIdParaConsultas, false);
                 System.out.println("indexSP: "+indexSp);
+                filtrar();
                 swipeContainer.setRefreshing(false);
                 spEstado.setSelection(indexSp);
 
@@ -165,35 +122,17 @@ public class CrudTickets extends AppCompatActivity {
     }
     private JSONObject jsonObject= null;
 
-    private void llenarSpinnerEstados(String url){
+    private void llenarSpinnerEstados(String url, boolean activar){
         JsonArrayRequest jsonarrayRequest = new JsonArrayRequest
                 (url, new Response.Listener<JSONArray>() {
                     //respuesta exitosa por parte del servidor
                     @Override
                     public void onResponse(JSONArray response) {
-                        consulta(response);
-//                        JSONObject jsonObject= null;
-//                        System.out.println("veamos que es esto: "+jsonObject);
-//                        for(int i=0; i < response.length();i++){
-//                            try{//extrayendo el objecto json de cada una de las posiciones del arreglo
-//                                jsonObject = response.getJSONObject(i);
-//
-//                                //llenamos el spinner segun los estados que esten disponibles para el usuario
-//                                ArrayList<String> filtros = new ArrayList<String>();
-//                                filtros.add("Elije una opcion");
-//                                for (int j = 0; j < jsonObject.getJSONArray("Estados").length(); j++) {
-//                                    filtros.add(jsonObject.getJSONArray("Estados").getString(j));
-//                                }
-//
-//                                arrayAdapter = new ArrayAdapter<String>(CrudTickets.this, android.R.layout.simple_spinner_item, filtros);
-//                                spEstado.setAdapter(arrayAdapter);
-//
-//                            }//cierre del try
-//                            catch (JSONException e) {
-//                                e.printStackTrace();
-//                                System.out.println("hubo un error mi shavo: "+e);
-//                            }
-//                        }//cierre del for
+                        if(activar){
+                            consulta(response);
+                        }else{
+                            consulta(response, true);
+                        }
                     }//cierre del onResponse
 
                 }, //en caso de respuesta de error por parte del servidor
@@ -219,13 +158,26 @@ public class CrudTickets extends AppCompatActivity {
 
                 //llenamos el spinner segun los estados que esten disponibles para el usuario
                 ArrayList<String> filtros = new ArrayList<String>();
-                filtros.add("Elije una opcion");
+                filtros.add("Todos los tickets");
                 for (int j = 0; j < jsonObject.getJSONArray("Estados").length(); j++) {
                     filtros.add(jsonObject.getJSONArray("Estados").getString(j));
                 }
 
                 arrayAdapter = new ArrayAdapter<String>(CrudTickets.this, android.R.layout.simple_spinner_item, filtros);
                 spEstado.setAdapter(arrayAdapter);
+
+            }//cierre del try
+            catch (JSONException e) {
+                e.printStackTrace();
+                System.out.println("hubo un error mi shavo: "+e);
+            }
+        }//cierre del for
+    }
+
+    private void consulta(JSONArray response, boolean bool){
+        for(int i=0; i < response.length();i++){
+            try{//extrayendo el objecto json de cada una de las posiciones del arreglo
+                jsonObject = response.getJSONObject(i);
 
             }//cierre del try
             catch (JSONException e) {
@@ -262,6 +214,11 @@ public class CrudTickets extends AppCompatActivity {
                                                  jsonObject.getJSONObject(index).getString("descripcion"),
                                                  jsonObject.getJSONObject(index).getString("estado"),
                                                  jsonObject.getJSONObject(index).getInt("id")));
+                }else if ("Todos los tickets".equals(filtro)) {
+                    tickets.add(new ListElemento(jsonObject.getJSONObject(index).getString("titulo"),
+                            jsonObject.getJSONObject(index).getString("descripcion"),
+                            jsonObject.getJSONObject(index).getString("estado"),
+                            jsonObject.getJSONObject(index).getInt("id")));
                 }
             }
             //EN ESTA parte intente meter lo que el chavo mete en el minuto 27:39.
@@ -274,6 +231,9 @@ public class CrudTickets extends AppCompatActivity {
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(CrudTickets.this));
                 recyclerView.setAdapter(listAdapter);
+                recyclerView.setVisibility(View.VISIBLE);
+            }else{
+                recyclerView.setVisibility(View.GONE);
             }
 
 

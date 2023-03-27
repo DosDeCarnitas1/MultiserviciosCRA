@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
         }
 
-
         SharedPreferences shPf = getSharedPreferences("credenciales",MainActivity.MODE_PRIVATE);
         String usuario = shPf.getString("user", null);
         if(usuario != null){

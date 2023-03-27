@@ -7,16 +7,29 @@
     android:background="@drawable/master4"
     tools:context=".CrudRefacciones">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvrefaccion"
-        android:layout_width="411dp"
-        android:layout_height="594dp"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeContainer"
+        android:layout_width="395dp"
+        android:layout_height="555dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.607">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvrefaccion"
+            android:layout_width="411dp"
+            android:layout_height="594dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <Spinner
         android:id="@+id/sprefaccion"

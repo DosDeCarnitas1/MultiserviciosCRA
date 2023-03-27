@@ -3,13 +3,16 @@ package com.example.multiservicioscra;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MenuTecnico extends AppCompatActivity {
 
     ImageButton ibtnServiciosActivos, ibtnServicioPendientes, ibtnServiciosCompletados;
+    Button btnCerrarSesionTecnico;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,7 @@ public class MenuTecnico extends AppCompatActivity {
         ibtnServiciosActivos = findViewById(R.id.ibtnTecnicosSA);
         ibtnServicioPendientes = findViewById(R.id.ibtnTecnicosSP);
         ibtnServiciosCompletados = findViewById(R.id.ibtnTecnicosSC);
+        btnCerrarSesionTecnico = findViewById(R.id.btnCerrarSesionTecnico);
 
         ibtnServicioPendientes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +50,19 @@ public class MenuTecnico extends AppCompatActivity {
                 Intent v = new Intent(getApplicationContext(), activity_tickets_tecnicos.class);
                 v.putExtra("Estado", "Inactivo");
                 v.putExtra("Titulo", "Tickets Completados");
+                startActivity(v);
+            }
+        });
+
+
+        btnCerrarSesionTecnico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences shPf = getSharedPreferences("credenciales",MainActivity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = shPf.edit();
+                editor.clear();
+                editor.apply();
+                Intent v = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(v);
             }
         });

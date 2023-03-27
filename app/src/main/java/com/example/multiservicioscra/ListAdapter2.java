@@ -45,6 +45,11 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
 
     public void setItems(List<ListRefaccion> items){mData2 = items;}
 
+    public void clear() {
+        mData2.clear();
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imageViewRefaccion;
         TextView nombreRefa, cantidadRefa;

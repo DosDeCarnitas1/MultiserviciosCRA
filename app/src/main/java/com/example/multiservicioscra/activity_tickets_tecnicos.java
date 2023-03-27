@@ -7,6 +7,7 @@ import static com.example.multiservicioscra.MainActivity.ip;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,13 +31,13 @@ import java.util.List;
 
 public class activity_tickets_tecnicos extends AppCompatActivity {
     Bundle b;
-//    String ip = "192.168.100.9";
-//    String ip = "192.168.90.111";
     RequestQueue requestQueue;
     ArrayAdapter arrayAdapter;
     List<ListElemento> tickets;
     RecyclerView recyclerView;
     TextView tvTicketsTecnico;
+    private SwipeRefreshLayout swipeContainer;
+
 
 
     @Override
@@ -48,6 +49,8 @@ public class activity_tickets_tecnicos extends AppCompatActivity {
         tvTicketsTecnico = findViewById(R.id.tvTicketsTecnicos);
 
         recyclerView = findViewById(R.id.rvTicketsTecnicos);
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+
 
         b = getIntent().getExtras();
 
@@ -58,8 +61,6 @@ public class activity_tickets_tecnicos extends AppCompatActivity {
 
         desplegarTickets("http://"+ip+"/MCRAAndroidphps/consultarTickets.php?tipoUsuario="+usuarioTipoParaConsultas+"&id_usuario="+usuarioIdParaConsultas,
                          b.getString("Estado"));
-
-
 
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(activity_tickets_tecnicos.this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
@@ -96,6 +97,20 @@ public class activity_tickets_tecnicos extends AppCompatActivity {
                     }
                 })
         );
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                desplegarTickets("http://"+ip+"/MCRAAndroidphps/consultarTickets.php?tipoUsuario="+usuarioTipoParaConsultas+"&id_usuario="+usuarioIdParaConsultas,
+                        b.getString("Estado"));
+                swipeContainer.setRefreshing(false);
+
+            }
+        });
+
     }
     private JSONObject jsonObject= null;
 
