@@ -3,11 +3,12 @@
 include 'conexion.php';
 $activo = 'Activo';
 //2.- Prepara la instrucción (query) para la base datos.
+$tipo = 'Empleado';
 $query ="insert into users(name,tipo,password,estado,created_at,updated_at) values(?,?,?,?,?,?)";
 $stmt = $mysqli->prepare($query);
 $stmt->bind_param('ssssss',
 $_POST['usuario'],
-$_POST['tipo'],
+$tipo,
 $_POST['password'],
 $activo,
 $timepstamp,
@@ -18,7 +19,7 @@ $stmt->execute();
 $id_usuario = $stmt->insert_id;
 //4.- preparar la respuesta de la base de datos.
 if($stmt->affected_rows>0){
-
+    $zona = 'Tlaquepaque';
     $query ="insert into tecnicos(nombre,apellido,puesto,domicilio, zona ,estado, id_usuario, created_at, updated_at) values(?,?,?,?,?,?,?,?,?)";
     //stmt se le conoce como statement
     $stmt = $mysqli->prepare($query);
@@ -28,7 +29,7 @@ if($stmt->affected_rows>0){
     $_POST['puesto'],
     $_POST['domicilio'],
     // $_POST['foto'],
-    $_POST['zona'],
+    $zona,
     $activo,//estado
     $id_usuario,
     $timepstamp,

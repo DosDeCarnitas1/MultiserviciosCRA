@@ -5,7 +5,7 @@ include "conexion.php";
 
 if($_GET['tipoUsuario'] == "Master"){
     //acesa a todos los estados: activo, inactivo y en progreso, y asignados a el
-    $estados = array("Estados"=>["Activo", "Pendiente","Inactivo", "Asignados"]);
+    $estados = array("Estados"=>["Activo", "Pendiente","Inactivo", "Asignados", "Sin Asignar"]);
     $query = "SELECT * FROM tickets";
     $stmt = $mysqli->prepare($query);
     // $stmt->bind_param('s', $_GET['id_usuario']);

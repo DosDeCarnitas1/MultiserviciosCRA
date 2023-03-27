@@ -13,4 +13,7 @@ while($row = $res->fetch_assoc()){
     $arrResultados[] = $row;
 }
 
-echo json_encode($arrResultados);
+$tipos = array("refaccionTipo"=>["Lavadora", "Secadora","Refrigerador","Estufa"]);
+$respuesta[] = array_merge($tipos, $arrResultados);
+
+echo json_encode($respuesta);
